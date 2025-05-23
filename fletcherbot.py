@@ -1,8 +1,11 @@
 import random
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from dotenv import load_dotenv
+import os
 
-TOKEN = "8087344734:AAHTdHQXPyZ1cvdaL-oWWHIt1vgqvY6EyJM"
+load_dotenv()
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 IMAGE_PATH = "image.jpg"  # Local image path
 
 async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -25,11 +28,3 @@ if __name__ == "__main__":
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("play", play))
     app.run_polling()
-
-
-
-
-
-
-
-
